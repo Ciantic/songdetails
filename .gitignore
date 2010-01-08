@@ -1,0 +1,4 @@
+tests/data/*
+docs/html/
+build/
+*.pyc
