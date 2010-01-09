@@ -1,0 +1,20 @@
+.field-name {
+    font-size: 80%;
+    background: transparent;
+}
+
+.class + .class
+{
+    border-top: 1px solid black;
+}
+
+
+dd > .field-list {
+	border-bottom: 1px dotted #ABABAB;
+	border-left: 1px dotted #ABABAB;
+	border-right: 1px dotted #ABABAB;
+}
+
+.field-body > .first > li > p {
+    margin-bottom: 0.7em;
+}

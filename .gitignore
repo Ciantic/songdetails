@@ -1,4 +1,4 @@
 tests/data/*
-docs/html/
+docs/_build/
 build/
 *.pyc
