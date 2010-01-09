@@ -5,10 +5,10 @@ extensions = ['sphinx.ext.autodoc', 'sphinx.ext.doctest', 'sphinx.ext.todo']
 templates_path = ['_templates']
 source_suffix = '.rst'
 master_doc = 'index'
-project = u'MPEG-1 Audio Python package'
+project = u'SongDetails python package'
 copyright = u'2010, Jari Pennanen'
-version = '0.5.4'
-release = '0.5.4'
+version = '0.5.0'
+release = '0.5.0 alpha'
 exclude_trees = ['_build']
 pygments_style = 'sphinx'
 
@@ -16,12 +16,12 @@ pygments_style = 'sphinx'
 
 html_theme = 'default'
 html_static_path = ['_static']
-htmlhelp_basename = 'MPEG-1AudioPythonpackagedoc'
+htmlhelp_basename = 'songdetailsdoc'
 
 # LaTeX ---------------------------------------
 
 latex_documents = [
-  ('index', 'MPEG-1AudioPythonpackage.tex', u'MPEG-1 Audio Python package Documentation',
+  ('index', 'songdetailsdoc.tex', u'SongDetails python package documentation',
    u'Jari Pennanen', 'manual'),
 ]
 
