@@ -1,4 +1,3 @@
-===============
 ``songdetails`` 
 ===============
 
@@ -9,16 +8,15 @@ default, the default is the fact that single song most likely has single artist,
 title, album name, etc.
 
 End-users
-=========
+---------
 
-Dependencies
-------------
+### Dependencies
 
-* ``mpeg1audio`` - http://github.com/Ciantic/mpeg1audio/
-* ``pytagger`` - http://github.com/scy/pytagger/
 
-Installation
-------------
+* `mpeg1audio` - http://github.com/Ciantic/mpeg1audio/
+* `pytagger` - http://github.com/scy/pytagger/
+
+### Installation
 
 Remember to first get the above dependencies.
 
@@ -30,8 +28,7 @@ Under Windows you can start the command prompt with administrator rights (by
 right clicking `cmd.exe` and using "Run as administrator") then run the above 
 command.
 	
-Usage example:
---------------
+### Usage example:
 
     >>> import songdetails
     >>> song = songdetails.scan("tests/data/song.mp3")
@@ -41,5 +38,4 @@ Usage example:
 
 
 Developers
-==========
-...
+----------
