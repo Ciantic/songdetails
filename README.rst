@@ -1,3 +1,4 @@
+===============
 ``songdetails`` 
 ===============
 
@@ -7,17 +8,17 @@ information. For example the ID3 feature of multiple same named frames is not
 default, the default is the fact that single song most likely has single artist,
 title, album name, etc.
 
-Installation
-------------
+End-users
+=========
 
 Dependencies
-''''''''''''
+------------
 
 * ``mpeg1audio`` - http://github.com/Ciantic/mpeg1audio/
 * ``pytagger`` - http://github.com/scy/pytagger/
 
 Installation
-''''''''''''
+------------
 
 Remember to first get the above dependencies.
 
@@ -37,3 +38,8 @@ Usage example:
     >>> if song is not None:
     ...     print song.duration
     0:03:12
+
+
+Developers
+==========
+...
