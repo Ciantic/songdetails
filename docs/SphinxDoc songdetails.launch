@@ -1,7 +1,11 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
 <launchConfiguration type="org.python.pydev.debug.regularLaunchConfigurationType">
-<listAttribute key="org.eclipse.debug.core.MAPPED_RESOURCE_PATHS"/>
-<listAttribute key="org.eclipse.debug.core.MAPPED_RESOURCE_TYPES"/>
+<listAttribute key="org.eclipse.debug.core.MAPPED_RESOURCE_PATHS">
+<listEntry value="/sphinx/sphinx-build.py"/>
+</listAttribute>
+<listAttribute key="org.eclipse.debug.core.MAPPED_RESOURCE_TYPES">
+<listEntry value="1"/>
+</listAttribute>
 <stringAttribute key="org.eclipse.ui.externaltools.ATTR_LOCATION" value="V:\_ProjectsOthers\python\sphinx\sphinx-build.py"/>
 <stringAttribute key="org.eclipse.ui.externaltools.ATTR_OTHER_WORKING_DIRECTORY" value="${project_loc:songdetails}/docs/"/>
 <stringAttribute key="org.eclipse.ui.externaltools.ATTR_TOOL_ARGUMENTS" value="-b html -d _build/doctrees . _build/html"/>

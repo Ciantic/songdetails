@@ -3,6 +3,8 @@
 	<name>songdetails</name>
 	<comment></comment>
 	<projects>
+		<project>mpeg1audio</project>
+		<project>pytagger</project>
 	</projects>
 	<buildSpec>
 		<buildCommand>
