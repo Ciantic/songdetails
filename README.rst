@@ -1,5 +1,11 @@
-``songdetails`` package documentation.
-==================================
+``songdetails`` 
+===============
+
+Pure Python package for retrieving details of songs in computer. The main 
+purpose is to provide easiest possible interface for updating and retrieving
+information. For example the ID3 feature of multiple same named frames is not
+default, the default is the fact that single song most likely has single artist,
+title, album name, etc.
 
 Installation
 ============
@@ -7,8 +13,8 @@ Installation
 Dependencies
 ------------
 
- * :mod:`mpeg1audio` - http://github.com/Ciantic/mpeg1audio/
- * :mod:`pytagger` - http://github.com/scy/pytagger/
+ * ``mpeg1audio` - http://github.com/Ciantic/mpeg1audio/
+ * ``pytagger`` - http://github.com/scy/pytagger/
 
 Installation
 ------------
