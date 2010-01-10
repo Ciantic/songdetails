@@ -1,7 +1,8 @@
 """songdetails - package tests"""
-
 import unittest
+import doctest
 import songdetails
+from songdetails import mp3details
 
 class SongTests(unittest.TestCase):
     """Simple song tests."""
@@ -10,7 +11,19 @@ class SongTests(unittest.TestCase):
         
     def testScan(self):
         """Scan test"""
-        songs = songdetails.scan(["data/song.mp3"])
-        self.assertEqual(songs[0].artist, "Rauli Badding Somerjoki")
-        self.assertEqual(songs[0].duration.seconds, 192)
-        
+        song = songdetails.scan("data/song.mp3")
+        self.assertEqual(song.artist, "Rauli Badding Somerjoki")
+        self.assertEqual(song.duration.seconds, 192)
+    
+    def testDocTests(self):
+        """Doc tests"""
+        doctest.testmod(songdetails, raise_on_error=True)
+        #doctest.testmod(songdetails.scanners, raise_on_error=True)
+        #doctest.testmod(mp3details, raise_on_error=True)
+        #doctest.testmod(mp3details.audio, raise_on_error=True)
+        #octest.testmod(mp3details.id3, raise_on_error=True)
+        #doctest.testmod(mp3details.scanners, raise_on_error=True)
+        # doctest.testmod(songdetails, raise_on_error=True)
+
+if __name__ == '__main__':
+    doctest.testmod(songdetails, raise_on_error=True)

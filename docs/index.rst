@@ -7,16 +7,26 @@ SongDetails package documentation.
    songdetails
    mp3details
    glossary
-   
-.. note::
 
-	Currently this supports only ID3v1, ID3v2 - ID3v2.4 using :mod:`pytagger`, 
-	and	audio details of MP3 using :mod:`mpeg1audio`.
+
+Installation
+============
+
+Dependencies
+------------
+
+ * :mod:`mpeg1audio` - http://github.com/Ciantic/mpeg1audio/
+ * :mod:`pytagger` - http://github.com/scy/pytagger/
+
 	
 Usage example:
 ==============
 
-
+    >>> import songdetails
+    >>> song = songdetails.scan("tests/data/song.mp3")
+    >>> if song is not None:
+    ...     print song.duration
+    0:03:12
 	
 Indices and tables
 ==================

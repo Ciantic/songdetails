@@ -1,30 +1,28 @@
 """
 :mod:`songdetails`
 ==================
-
-Dependencies
-------------
-
- * :mod:`mpeg1audio` - http://github.com/Ciantic/mpeg1audio/
- * :mod:`pytagger` - http://github.com/scy/pytagger/
  
 Usage example:
 --------------
 
     >>> import songdetails
-    >>> songs = songdetails.scan(["data/song.mp3"])
-    >>> songs[0].duration
+    >>> song = songdetails.scan("data/song.mp3")
+    >>> if song is not None:
+    ...     print song.duration
     0:03:12
 
 Members
 -------
 
 """
-from mpeg1audio import MPEGAudio, MPEGAudioHeaderException
+from songdetails import scanners
+from songdetails.scanners import scan, scan_files
 import re
 
-# Pylint disable settings:
-# ------------------------
+__all__ = ['scanners', 'scan', 'scan_files', 'SongDetails', 'SongFileDetails']
+
+# Pylint disable settings --------------------
+#
 # ToDos, DocStrings:
 # pylint: disable-msg=W0511,W0105 
 #
@@ -33,68 +31,6 @@ import re
 #
 # Too many instance attributes, Too few public methods, Too many init arguments:
 # pylint: disable-msg=R0902,R0903,R0913
-
-SCANNERS = []
-"""Scanners registered."""
-
-MULTI_SCANNERS = []
-"""Multi scanners registered."""
-
-def register_file_scan(scan_function, extension_matches=None, 
-                       custom_matcher=None):
-    """Register single file scanner.
-    
-    :param scan_function: Scan function returning SongDetails.
-    :param extension_matches: Match files by extension, for example 
-        ``("mp3", "mp2", "mp1")``.
-    :param custom_matcher: Match files by custom function.
-    
-    """
-    def extension_matcher(filepath): #IGNROE:C0111
-        for ext in extension_matches:
-            if filepath.endswith(ext):
-                return True
-        return False
-    
-    filepath_matcher = custom_matcher or extension_matcher
-    SCANNERS.append((scan_function, filepath_matcher))
-
-def register_multifile_scan(multiscan_function, files_matcher):
-    """Register multi file scanner.
-    
-    :param scan_function: Scan function returning SongDetails from list of 
-        files.
-    :param files_matcher: Function returning True for list of files that match
-        or False for files that doesn't match.
-        
-    """
-    MULTI_SCANNERS.append((multiscan_function, files_matcher))
-
-def scan(files):
-    """Scan files for SongDetails.
-    
-    :param files: List of files to be scanned.
-    :type files: [string, ...]
-    
-    :rtype: [:mod:`SongDetails`, ...]
-    :return: List of SongDetails found, list maybe empty if nothing is found.
-    
-    """
-    import mp3details
-    
-    songdetails = []
-    for multiscan_function, files_matcher in MULTI_SCANNERS:
-        if files_matcher(files):
-            songdetails.append(multiscan_function(files))
-            
-    for file in files:
-        for scan_function, filepath_matcher in SCANNERS:
-            if filepath_matcher(file):
-                song = scan_function(file)
-                if song is not None:
-                    songdetails.append(song)
-    return songdetails
-    
 
 class SongDetails(object):
     """Song details.
@@ -182,7 +118,6 @@ class SongFileDetails(SongDetails):
         super(SongFileDetails, self).__init__()
         
         self.filepath = filepath
-        """Path to the MP3 file.
+        """Path to the song file.
         
         :type: string"""
-
