@@ -2,6 +2,7 @@
 import unittest
 import doctest
 import songdetails
+import random
 from songdetails import mp3details
 
 class SongTests(unittest.TestCase):
@@ -14,6 +15,19 @@ class SongTests(unittest.TestCase):
         song = songdetails.scan("data/song.mp3")
         self.assertEqual(song.artist, "Rauli Badding Somerjoki")
         self.assertEqual(song.duration.seconds, 192)
+        
+    def testCommit(self):
+        """Commit test"""
+        # Open and save
+        song = songdetails.scan("data/commit.mp3")
+        random_artist_name = "Random artist%s" % random.random()
+        song.artist = random_artist_name
+        song.save()
+        del song
+        
+        # Re-open and read
+        opensong = songdetails.scan("data/commit.mp3")
+        self.assertEqual(opensong.artist, random_artist_name)
     
     def testDocTests(self):
         """Doc tests"""

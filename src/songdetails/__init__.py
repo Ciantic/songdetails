@@ -104,8 +104,11 @@ class SongDetails(object):
         self.language = None
         """Language
         
-        :type: string, or None""" 
-
+        :type: string, or None"""
+         
+    def save(self):
+        """Save the changes to the song."""
+        pass
 
 class SongFileDetails(SongDetails):
     """Song File details"""

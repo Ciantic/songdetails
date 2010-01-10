@@ -269,7 +269,7 @@ def _force_unicode(bstr, encoding, fallback_encodings=None):
 
 class ID3TagDescriptor(object):
     """ID3vTag descriptor"""
-    def __init__(self, v24fid, v23fid=None, v2fid=None, v1fid=None,
+    def __init__(self, v24fid, v23fid=None, v22fid=None, v1fid=None,
                  converter=None):
         """Create id3v descriptor.
         
@@ -279,8 +279,8 @@ class ID3TagDescriptor(object):
         :param v23fid: ID3v2.3 Frame ID, for example "TALB" for album.
         :type v23fid: string, or None
         
-        :param v2fid: ID3v2 Frame ID, for example "TAL" for album.
-        :type v2fid: string, or None
+        :param v22fidd: ID3v2 Frame ID, for example "TAL" for album.
+        :type v22fidd: string, or None
         
         :param v1fid: ID3v1 Frame "ID", for example "album".
         :type v1fid: string, or None
@@ -292,7 +292,7 @@ class ID3TagDescriptor(object):
         
         """
         self.v1fid = v1fid
-        self.v2fid = v2fid
+        self.v22fid = v22fid
         self.v23fid = v23fid
         self.v24fid = v24fid
         self.converter = converter or (lambda x: x)
@@ -307,8 +307,23 @@ class ID3TagDescriptor(object):
         :type value: object
         
         """
+        if not hasattr(instance, "_id3v2"):
+            return
+        
         # TODO: Setting ID3TagDescriptor values.
-        pass
+        for fid in (self.v24fid, self.v23fid, self.v22fid):
+            if fid is not None:
+                if instance._id3v2_frames.has_key(fid):
+                    new_frame = instance._id3v2.new_frame(fid)
+                    new_frame.set_text(value)
+                
+                    # Remove existing
+                    instance._id3v2.frames.remove(instance._id3v2_frames[fid][0])
+                    instance._id3v2_frames[fid][0] = new_frame
+                    
+                    # Append as new frame
+                    instance._id3v2.frames.append(new_frame)
+                    return
     
     def __get__(self, instance, instance_class=None): #@UnusedVariable
         """Get value.
@@ -362,7 +377,7 @@ class ID3TagDescriptor(object):
         id3v2_frames = instance._id3v2_frames
         
         # Try to get from id3v2.x frame
-        for rule in (self.v24fid, self.v23fid, self.v2fid):
+        for rule in (self.v24fid, self.v23fid, self.v22fid):
             try:
                 first_frame = id3v2_frames[rule][0]
                 # Parse field
@@ -405,4 +420,13 @@ class ID3TagDescriptor(object):
             for frame in instance._id3v2.frames:
                 instance._id3v2_frames.setdefault(frame.fid, [])
                 instance._id3v2_frames[frame.fid].append(frame)
-
+    
+    @classmethod
+    def save(cls, instance):
+        """Saves the changes in instance.
+        
+        :param instance: Owner instance.
+        :type instance: object
+        
+        """        
+        instance._id3v2.commit()

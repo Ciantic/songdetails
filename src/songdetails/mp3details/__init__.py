@@ -59,4 +59,7 @@ class MP3Details(SongFileDetails):
         super(MP3Details, self).__init__(filepath)
         ID3TagDescriptor.initialize_owner(self, filepath)
         MPEGAudioDescriptor.initialize_owner(self, filepath)
-
+        
+    def save(self):
+        """Save changes to the MP3"""
+        ID3TagDescriptor.save(self)
