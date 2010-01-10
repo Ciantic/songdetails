@@ -1,5 +1,5 @@
-``songdetails`` 
-===============
+Python package ``songdetails`` 
+==============================
 
 Pure Python package for retrieving details of songs in computer. The main 
 purpose is to provide easiest possible interface for updating and retrieving
@@ -39,3 +39,20 @@ command.
 
 Developers
 ----------
+
+This project uses Eclipse with [PyDev](http://pydev.sourceforge.net/), [Pylint](http://www.logilab.org/857) and [Sphinx documentation generator](http://sphinx.pocoo.org/). Accordingly all docstrings and docs are in reStructuredText, which ultimately is generated to HTML.
+
+### Eclipse workspace
+
+#### Project references
+
+`songdetails` has two project references: `pytagger` and `mpeg1audio`. It is best to create own workspace for this project, where you also add those two projects.
+
+#### Launch configurations
+
+There exists two Eclipse launch configurations:
+
+ * `tests/Tests for songdetails.launch` - Unit tests.
+ * `docs/SphinxDoc songdetails.launch` - Generating documentation.
+
+Using Eclipse you must go to Run Configurations *dialog* and run them once so they appear to the list.
