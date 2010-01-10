@@ -7,6 +7,14 @@ Dependencies
 
  * :mod:`mpeg1audio` - http://github.com/Ciantic/mpeg1audio/
  * :mod:`pytagger` - http://github.com/scy/pytagger/
+ 
+Usage example:
+--------------
+
+    >>> import songdetails
+    >>> songs = songdetails.scan(["data/song.mp3"])
+    >>> songs[0].duration
+    0:03:12
 
 Members
 -------
