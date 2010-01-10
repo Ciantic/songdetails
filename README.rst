@@ -13,8 +13,8 @@ Installation
 Dependencies
 ------------
 
- * ``mpeg1audio` - http://github.com/Ciantic/mpeg1audio/
- * ``pytagger`` - http://github.com/scy/pytagger/
+* ``mpeg1audio` - http://github.com/Ciantic/mpeg1audio/
+* ``pytagger`` - http://github.com/scy/pytagger/
 
 Installation
 ------------
