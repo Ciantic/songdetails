@@ -252,6 +252,10 @@ def _force_unicode(bstr, encoding, fallback_encodings=None):
     :rtype: unicode string
     
     """
+    # We got unicode, we give unicode
+    if isinstance(bstr, unicode):
+        return bstr
+    
     if fallback_encodings is None:
         fallback_encodings = ['UTF-16', 'UTF-8', 'ISO-8859-1']
         
@@ -296,7 +300,24 @@ class ID3TagDescriptor(object):
         self.v23fid = v23fid
         self.v24fid = v24fid
         self.converter = converter or (lambda x: x)
+    
+    def _get_fid_by_version(self, instance):
+        """Get FID For this version.
         
+        :param instance: Instance of owner of this descriptor
+        :return: Returns Frame ID used for setting and getting values. 
+        :rtype: string
+        
+        """
+        if instance._id3v2.version == "2.4":
+            return self.v23fid
+        elif instance._id3v2.version == "2.3":
+            return self.v23fid
+        elif instance._id3v2.version == "2.2":
+            return self.v22fid
+        else:
+            return self.v24fid # TODO: CHECK!
+    
     def __set__(self, instance, value):
         """Set value.
         
@@ -304,26 +325,27 @@ class ID3TagDescriptor(object):
         :type instance: object
         
         :param value: New value.
-        :type value: object
+        :type value: unicode string
         
         """
         if not hasattr(instance, "_id3v2"):
             return
         
-        # TODO: Setting ID3TagDescriptor values.
-        for fid in (self.v24fid, self.v23fid, self.v22fid):
-            if fid is not None:
-                if instance._id3v2_frames.has_key(fid):
-                    new_frame = instance._id3v2.new_frame(fid)
-                    new_frame.set_text(value)
-                
-                    # Remove existing
-                    instance._id3v2.frames.remove(instance._id3v2_frames[fid][0])
-                    instance._id3v2_frames[fid][0] = new_frame
-                    
-                    # Append as new frame
-                    instance._id3v2.frames.append(new_frame)
-                    return
+        fid = self._get_fid_by_version(instance)
+        if fid is None:
+            return
+        
+        new_frame = instance._id3v2.new_frame(fid)
+        new_frame.set_text(_force_unicode(value, 'utf-16'))
+        
+        # Remove existing (only first)
+        if instance._id3v2_frames.has_key(fid):
+            instance._id3v2.frames.remove(instance._id3v2_frames[fid][0])
+            del instance._id3v2_frames[fid][0]
+        
+        instance._id3v2.frames.append(new_frame)
+        instance._id3v2_frames.setdefault(fid, [])
+        instance._id3v2_frames[fid].append(new_frame)
     
     def __get__(self, instance, instance_class=None): #@UnusedVariable
         """Get value.
@@ -376,19 +398,17 @@ class ID3TagDescriptor(object):
         """
         id3v2_frames = instance._id3v2_frames
         
-        # Try to get from id3v2.x frame
-        for rule in (self.v24fid, self.v23fid, self.v22fid):
-            try:
-                first_frame = id3v2_frames[rule][0]
-                # Parse field
-                first_frame.parse_field()
-                
-                first_string = first_frame.strings[0].replace("\x00", "")
-                # return first_string
-                # Return first string
-                return _force_unicode(first_string, first_frame.encoding)
-            except (KeyError, IndexError, ID3FrameException):
-                pass
+        fid = self._get_fid_by_version(instance)
+        
+        try:
+            # Parse field
+            first_frame = id3v2_frames[fid][0]
+        except KeyError:
+            pass
+        else:
+            first_frame.parse_field()
+            first_string = first_frame.strings[0].replace("\x00", "")
+            return _force_unicode(first_string, first_frame.encoding)
             
         raise ValueError('Cannot find the id3v2 frame, or frame ID.')
     

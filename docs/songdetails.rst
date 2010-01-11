@@ -12,3 +12,5 @@ SongDetails package documentation.
     :undoc-members:
     :inherited-members:
     :show-inheritance:
+
+    

@@ -1,4 +1,5 @@
 """songdetails - package tests"""
+# -*- coding: iso-8859-1 -*-
 import unittest
 import doctest
 import songdetails
@@ -20,7 +21,7 @@ class SongTests(unittest.TestCase):
         """Commit test"""
         # Open and save
         song = songdetails.scan("data/commit.mp3")
-        random_artist_name = "Random artist%s" % random.random()
+        random_artist_name = u"Örinä artist%s" % random.random()
         song.artist = random_artist_name
         song.save()
         del song

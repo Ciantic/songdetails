@@ -42,6 +42,12 @@ class SongDetails(object):
      
         This is only fast sketch, and thus may contain too I{many or few} 
         attributes.
+    
+    .. note::
+    
+        It is recommended to use :func:`unicode` for *setting* values of song
+        details. This way the underlying system can handle the encoding to
+        files.
         
     """
     def __init__(self):
@@ -49,12 +55,12 @@ class SongDetails(object):
         self.title = None
         """Title
         
-        :type: string, or None"""
+        :type: unicode, or None"""
         
         self.artist = None
         """Artist
         
-        :type: string, or None"""
+        :type: unicode, or None"""
         
         self.track = None
         """Track number
@@ -64,7 +70,7 @@ class SongDetails(object):
         self.album = None
         """Album
         
-        :type: string, or None"""
+        :type: unicode, or None"""
         
         self.year = None
         """Year
@@ -84,17 +90,17 @@ class SongDetails(object):
         self.genre = None
         """Genre
         
-        :type: string, or None"""
+        :type: unicode, or None"""
         
         self.composer = None
         """Composer
         
-        :type: string, or None"""
+        :type: unicode, or None"""
         
         self.comment = None
         """Comment
         
-        :type: string, or None"""
+        :type: unicode, or None"""
         
         self.duration = None
         """Duration
@@ -104,7 +110,7 @@ class SongDetails(object):
         self.language = None
         """Language
         
-        :type: string, or None"""
+        :type: unicode, or None"""
          
     def save(self):
         """Save the changes to the song."""
