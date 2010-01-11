@@ -1,7 +1,5 @@
 """
-:mod:`mp3details.scanners`
-==========================
-
+All MP3 detail scanners.
 """
 from songdetails.mp3details import MP3Details
 from songdetails.mp3details.exceptions import MP3DetailsException

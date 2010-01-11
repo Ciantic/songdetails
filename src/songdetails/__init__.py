@@ -1,6 +1,5 @@
 """
-:mod:`songdetails`
-==================
+Pure python package capable of retrieving song details from bunch of files
  
 Usage example:
 --------------
@@ -18,9 +17,6 @@ Saving changes:
     >>> if song is not None:
     ...     song.artist = "Great artist"
     ...     song.save()
-
-Members
--------
 
 """
 from songdetails import scanners

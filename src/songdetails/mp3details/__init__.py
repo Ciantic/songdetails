@@ -1,15 +1,12 @@
 """
-:mod:`mp3details`
-=================
+MP3 Details subpackage for :mod:`songdetails`, you should not need to use this
+directly since there exists :func:`songdetails.scan`.
 
 Dependencies
 ------------
 
  * :mod:`mpeg1audio` - http://github.com/Ciantic/mpeg1audio/
  * :mod:`pytagger` - http://github.com/scy/pytagger/
-
-Members
-------------
 
 """
 

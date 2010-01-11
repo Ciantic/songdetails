@@ -1,7 +1,8 @@
 # -*- coding: utf-8 -*-
-import sys, os
+import sys, os, shutil
 
-extensions = ['sphinx.ext.autodoc', 'sphinx.ext.doctest', 'sphinx.ext.todo']
+extensions = ['sphinx.ext.autodoc', 'sphinx.ext.doctest', 'sphinx.ext.todo',
+              'sphinx.ext.autosummary']
 templates_path = ['_templates']
 source_suffix = '.rst'
 master_doc = 'index'
@@ -27,9 +28,14 @@ latex_documents = [
 
 # Autodoc ------------------------------------
 
-autoclass_content = "both"
+# autoclass_content = "both"
 autodoc_member_order = "groupwise"
+autosummary_generate = True
 
 # Todo ------------------------------------
 
 todo_include_todos = False
+
+if os.path.exists("api"):
+    print "Deleting old api..."
+    shutil.rmtree("api")

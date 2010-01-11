@@ -1,13 +1,11 @@
 SongDetails package documentation.
 ==================================
 
-.. toctree::
-   :maxdepth: 2
+.. autosummary::
+   :toctree: api
 
    songdetails
-   mp3details
-   glossary
-
+   songdetails.mp3details
 
 Installation
 ============

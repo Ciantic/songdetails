@@ -1,7 +1,4 @@
 """
-:mod:`mp3details.exceptions`
-============================
-
 This module purely to prevent circular reference within package problems.
 """
 

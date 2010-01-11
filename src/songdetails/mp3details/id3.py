@@ -1,6 +1,5 @@
 """
-:mod:`mp3details.id3`
-=======================
+ID3 Helper for :mod:`songdetails.mp3details`.
 
 """
 from tagger.exceptions import ID3FrameException
@@ -357,6 +356,10 @@ class ID3TagDescriptor(object):
         :type instance_class: class
          
         """
+        
+        if instance is None:
+            return None
+        
         # First priority, get id3v2 frame item if found
         try:
             return self.converter(self._get_id3v2(instance))
@@ -396,6 +399,7 @@ class ID3TagDescriptor(object):
         :raise ValueError: Raised when value cannot be retrieved.
         
         """
+        
         id3v2_frames = instance._id3v2_frames
         
         fid = self._get_fid_by_version(instance)

@@ -5,6 +5,7 @@
 	<projects>
 		<project>mpeg1audio</project>
 		<project>pytagger</project>
+		<project>sphinx</project>
 	</projects>
 	<buildSpec>
 		<buildCommand>

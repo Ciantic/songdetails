@@ -1,6 +1,6 @@
-.field-name {
-    font-size: 80%;
-    background: transparent;
+th.field-name {
+    font-size: 80% !important;
+    background: transparent !important;
 }
 
 .class + .class

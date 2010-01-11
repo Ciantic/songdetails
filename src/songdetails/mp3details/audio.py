@@ -1,6 +1,5 @@
 """
-:mod:`mp3details.audio`
-=======================
+Module to help mp3details retrieve MPEG-1 audio metadata.
 """
 
 # Pylint disable settings --------------------
@@ -51,6 +50,9 @@ class MPEGAudioDescriptor(object):
         :type instance_class: class
          
         """
+        if instance is None:
+            return
+        
         return getattr(instance._mpegaudio, self.name)
     
     @classmethod
