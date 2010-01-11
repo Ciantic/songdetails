@@ -12,9 +12,10 @@ End-users
 
 ### Dependencies
 
+* [`mpeg1audio`](http://github.com/Ciantic/mpeg1audio/)
+* [`pytagger`](http://github.com/scy/pytagger/)
 
-* `mpeg1audio` - http://github.com/Ciantic/mpeg1audio/
-* `pytagger` - http://github.com/scy/pytagger/
+*Note:* Both of the dependencies are *pure* python packages.
 
 ### Installation
 
