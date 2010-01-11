@@ -11,6 +11,14 @@ Usage example:
     ...     print song.duration
     0:03:12
 
+Saving changes:
+
+    >>> import songdetails
+    >>> song = songdetails.scan("data/commit.mp3")
+    >>> if song is not None:
+    ...     song.artist = "Great artist"
+    ...     song.save()
+
 Members
 -------
 

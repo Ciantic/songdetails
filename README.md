@@ -2,7 +2,7 @@ Python package ``songdetails``
 ==============================
 
 Pure Python package for retrieving details of songs in computer. The main 
-purpose is to provide easiest possible interface for updating and retrieving
+purpose is to provide easiest possible interface for *updating* and *retrieving*
 information. For example the ID3 feature of multiple same named frames is not
 default, the default is the fact that single song most likely has single artist,
 title, album name, etc.
@@ -31,11 +31,18 @@ command.
 ### Usage example:
 
     >>> import songdetails
-    >>> song = songdetails.scan("tests/data/song.mp3")
+    >>> song = songdetails.scan("data/song.mp3")
     >>> if song is not None:
     ...     print song.duration
     0:03:12
 
+#### Saving changes:
+
+    >>> import songdetails
+    >>> song = songdetails.scan("data/commit.mp3")
+    >>> if song is not None:
+    ...     song.artist = "Great artist"
+    ...     song.save()
 
 Developers
 ----------
