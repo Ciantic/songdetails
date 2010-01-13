@@ -7,6 +7,10 @@ information. For example the ID3 feature of multiple same named frames is not
 default, the default is the fact that single song most likely has single artist,
 title, album name, etc.
 
+Why on earth would you want to create yet another tagger thingie? Simply there 
+doesn't seem to be any decent tagging program licensed for free use, those 
+which are free are under GPL, and that is no-no for most of the projects.
+
 End-users
 ---------
 
