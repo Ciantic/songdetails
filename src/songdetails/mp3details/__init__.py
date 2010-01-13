@@ -30,7 +30,7 @@ from songdetails.mp3details.id3 import ID3TagDescriptor, _track_convert, \
     _genre_convert
 from songdetails.mp3details.exceptions import MP3DetailsException
 
-__all__ = ["audio", "scanners", "id3", 'scan', "MP3Details", "MP3DetailsException"]
+__all__ = ["audio", "id3", 'scan', "MP3Details", "MP3DetailsException"]
 
 class MP3Details(SongFileDetails):
     """MP3 details"""

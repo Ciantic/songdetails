@@ -23,7 +23,7 @@ from songdetails import scanners
 from songdetails.scanners import scan, scan_files
 import re
 
-__all__ = ['scanners', 'scan', 'scan_files', 'SongDetails', 'SongFileDetails']
+__all__ = ['scanners', 'mp3details', 'scan', 'scan_files', 'SongDetails', 'SongFileDetails']
 
 # Pylint disable settings --------------------
 #
