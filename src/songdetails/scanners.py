@@ -1,9 +1,7 @@
 """
-:mod:`songdetails.scanners`
-===========================
+Song detail scanner system.
 """
 import songdetails
-
 # Pylint disable settings --------------------
 #
 # ToDos, DocStrings:
@@ -111,8 +109,10 @@ def scan(file_path):
 
 def _register_default_scanners():
     """Registers the default scanners provided."""
-    from mp3details.scanners import scan as mp3_scan
+    from songdetails.mp3details import scan as mp3_scan
     if _HAS_DEFAULTS:
         return
     songdetails.scanners._HAS_DEFAULTS = True
+    
+    # Register individual scanners
     register_file_scan(mp3_scan, ('.mp3', ))

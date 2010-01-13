@@ -1,43 +1,91 @@
 {{ fullname }}
-{{ underline }}
+{{ '=' * ((fullname | length) + 7) }}
 
 .. automodule:: {{ fullname }}
 
-    {% block functions %}
-    {% if functions %}
-    .. rubric:: Functions
+{% block modules %}
+{% if modules %}	
+Modules
+------------------
 
-    .. autosummary::
-        :toctree: {{ fullname }}/functions
-        
-    {% for item in functions %}
-        {{ item }}
-    {%- endfor %}
-    {% endif %}
-    {% endblock %}
+.. autosummary::
+    :toctree: {{ name }}/
 
-    {% block classes %}
-    {% if classes %}
-    .. rubric:: Classes
+{% for submodule in modules %}
+    {{ submodule }}
+{% endfor %}
 
-    .. autosummary::
-        :toctree: {{ fullname }}/classes
-        
-    {% for item in classes %}
-        {{ item }}
-    {%- endfor %}
-    {% endif %}
-    {% endblock %}
+{% endif %}
+{% endblock %}
 
-    {% block exceptions %}
-    {% if exceptions %}
-    .. rubric:: Exceptions
+Members
+---------------
 
-    .. autosummary::
-        :toctree: {{ fullname }}/exceptions
-        
-    {% for item in exceptions %}
-        {{ item }}
-    {%- endfor %}
-    {% endif %}
-    {% endblock %}
+.. autosummary::
+	:nosignatures:
+	
+	{% for member in members %}
+	{% if not member.startswith("_") %}
+	{{ member }}
+	{% endif %}
+	{% endfor %}
+
+Member definitions
+------------------
+
+{% block attributes %}
+{% if attributes %}	
+.. rubric:: Attributes
+
+{% for attr in attributes %}
+.. autoattribute:: {{ fullname }}.{{ attr }}
+{% endfor %}
+{% endif %}
+{% endblock %}
+
+
+{% block datas %}
+{% if datas %}	
+.. rubric:: Attributes
+
+{% for data in datas %}
+.. autodata:: {{ fullname }}.{{ data }}
+{% endfor %}
+{% endif %}
+{% endblock %}
+
+
+{% block functions %}
+{% if functions %}
+.. rubric:: Functions
+
+{% for item in functions %}
+.. autofunction:: {{ item }}
+{%- endfor %}
+{% endif %}
+{% endblock %}
+
+
+{% block classes %}
+{% if classes %}
+
+.. rubric:: Classes
+
+{% for item in classes %}
+.. autoclass:: {{ item }}()
+	:inherited-members:
+	:show-inheritance:
+{%- endfor %}
+{% endif %}
+{% endblock %}
+
+
+{% block exceptions %}
+{% if exceptions %}
+.. rubric:: Exceptions
+    
+{% for item in exceptions %}
+.. autoexception:: {{ item }}
+{%- endfor %}
+{% endif %}
+{% endblock %}

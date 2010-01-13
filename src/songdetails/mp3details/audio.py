@@ -16,6 +16,8 @@ Module to help mp3details retrieve MPEG-1 audio metadata.
 from mpeg1audio import MPEGAudio, MPEGAudioHeaderException
 from songdetails.mp3details.exceptions import MP3DetailsException
 
+__all__ = ['MPEGAudioDescriptor']
+
 class MPEGAudioDescriptor(object):
     """MPEG Audio descriptor"""
     def __init__(self, name):

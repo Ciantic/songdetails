@@ -1,22 +1,15 @@
 SongDetails package documentation.
 ==================================
 
-.. autosummary::
-   :toctree: api
-
-   songdetails
-   songdetails.mp3details
-
 Installation
 ============
 
-Dependencies
-------------
+.. rubric:: Dependencies
 
- * :mod:`mpeg1audio` - http://github.com/Ciantic/mpeg1audio/
- * :mod:`pytagger` - http://github.com/scy/pytagger/
+* :mod:`mpeg1audio` - http://github.com/Ciantic/mpeg1audio/
+* :mod:`pytagger` - http://github.com/scy/pytagger/
 
-	
+
 Usage example:
 ==============
 
@@ -26,6 +19,22 @@ Usage example:
     ...     print song.duration
     0:03:12
 	
+
+API Reference
+=============
+
+.. autosummary::
+   :toctree: api
+
+   songdetails
+
+
+.. toctree::
+   :maxdepth: 2
+
+   glossary
+
+
 Indices and tables
 ==================
 

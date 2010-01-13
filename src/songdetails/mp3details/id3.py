@@ -6,6 +6,8 @@ from tagger.exceptions import ID3FrameException
 from tagger.id3v1 import ID3v1
 from tagger.id3v2 import ID3v2
 
+__all__ = ["ID3TagDescriptor"]
+
 # Pylint disable settings:
 # ------------------------
 # ToDos, DocStrings:

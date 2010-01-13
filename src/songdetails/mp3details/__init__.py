@@ -7,7 +7,7 @@ Dependencies
 
  * :mod:`mpeg1audio` - http://github.com/Ciantic/mpeg1audio/
  * :mod:`pytagger` - http://github.com/scy/pytagger/
-
+    
 """
 
 # Pylint disable settings:
@@ -30,7 +30,7 @@ from songdetails.mp3details.id3 import ID3TagDescriptor, _track_convert, \
     _genre_convert
 from songdetails.mp3details.exceptions import MP3DetailsException
 
-__all__ = ["MP3Details", "MP3DetailsException"]
+__all__ = ["audio", "scanners", "id3", 'scan', "MP3Details", "MP3DetailsException"]
 
 class MP3Details(SongFileDetails):
     """MP3 details"""
@@ -60,3 +60,16 @@ class MP3Details(SongFileDetails):
     def save(self):
         """Save changes to the MP3"""
         ID3TagDescriptor.save(self)
+
+def scan(filepath):
+    """Scan files for MP3Details.
+    
+    :param filepath: Path to file.
+    
+    :rtype: :mod:`MP3Details`, or None
+    
+    """
+    try:
+        return MP3Details(filepath)
+    except MP3DetailsException:
+        return None
