@@ -161,7 +161,7 @@ class ID3TagDescriptor(object):
         # Note that there exists two pytagger versions, other has id3v2 frame
         # version number as string, and other as floats.
         #
-        # The one with string frame version numbers is mostlikely the newer
+        # The one with string frame version numbers is most likely the newer
         # codebase.
         if instance._id3v2.version in (2.4, "2.4"):
             return self.v24fid
