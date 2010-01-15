@@ -1,5 +1,6 @@
 """
-Pure python package capable of retrieving song details from bunch of files
+Pure python package capable of retrieving and updating song details from bunch
+of files.
  
 Usage example:
 --------------
@@ -106,15 +107,25 @@ class SongDetails(object):
         
         :type: unicode, or None"""
         
+        self.language = None
+        """Language
+        
+        :type: unicode, or None"""
+        
         self.duration = None
         """Duration
         
         :type: datetime.timedelta, or None"""
         
-        self.language = None
-        """Language
+        self.is_lossless = False
+        """Is lossless?
         
-        :type: unicode, or None"""
+        :type: bool"""
+        
+        self.bitrate = None
+        """Bitrate in kbps, if applicable.
+        
+        :type: number, or None"""
          
     def save(self):
         """Save the changes to the song."""

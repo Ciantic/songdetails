@@ -28,7 +28,18 @@ def register_file_scan(scan_function, extension_matches=None,
     :param scan_function: Scan function returning SongDetails.
     :param extension_matches: Match files by extension, for example 
         ``("mp3", "mp2", "mp1")``.
-    :param custom_matcher: Match files by custom function.
+    :param custom_matcher: Match files by custom function, custom function gets
+        only filepaths or urls as argument and should return :const:`True` or
+        :const:`False`.
+        
+        .. note::
+            
+            Custom matcher should never assume that it can open the file given
+            in argument, it should only try to roughly match using the string
+            only!
+            
+            Reason is that custom_matcher may be given URL's, for instance when
+            registered scanner handles file objects retrieved behind URL.
     
     """
     def extension_matcher(filepath):
@@ -61,7 +72,7 @@ def scan_files(files):
         file.
     :type files: [string, ...]
     
-    :rtype: [:mod:`SongDetails`, ...]
+    :rtype: [:class:`SongDetails`, ...]
     :return: List of SongDetails found, list maybe empty if nothing is found.
     
     """
@@ -93,12 +104,14 @@ def scan(file_path):
     :param file_path: Path to the file.
     
     :return: Returns the SongDetails matching the given file path.
-    :rtype: SongDetails or None
+    :rtype: :class:`SongDetails`, or :const:`None`
     
     """
     
+    # Registers default scanners
     _register_default_scanners()
     
+    # Tries all registered scanners
     for scan_function, file_path_matcher in _SCANNERS:
         if file_path_matcher(file_path):
             song = scan_function(file_path)
@@ -109,10 +122,11 @@ def scan(file_path):
 
 def _register_default_scanners():
     """Registers the default scanners provided."""
+    global _HAS_DEFAULTS
     from songdetails.mp3details import scan as mp3_scan
     if _HAS_DEFAULTS:
         return
-    songdetails.scanners._HAS_DEFAULTS = True
+    _HAS_DEFAULTS = True
     
     # Register individual scanners
     register_file_scan(mp3_scan, ('.mp3', ))

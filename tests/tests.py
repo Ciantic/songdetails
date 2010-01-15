@@ -1,5 +1,6 @@
 """songdetails - package tests"""
 # -*- coding: iso-8859-1 -*-
+import os
 import unittest
 import doctest
 import songdetails
@@ -13,21 +14,21 @@ class SongTests(unittest.TestCase):
         
     def testScan(self):
         """Scan test"""
-        song = songdetails.scan("data/song.mp3")
+        song = songdetails.scan(os.path.join("data", "song.mp3"))
         self.assertEqual(song.artist, "Rauli Badding Somerjoki")
         self.assertEqual(song.duration.seconds, 192)
         
     def testCommit(self):
         """Commit test"""
         # Open and save
-        song = songdetails.scan("data/commit.mp3")
+        song = songdetails.scan(os.path.join("data", "commit.mp3"))
         random_artist_name = u"Örinä artist%s" % random.random()
         song.artist = random_artist_name
         song.save()
         del song
         
         # Re-open and read
-        opensong = songdetails.scan("data/commit.mp3")
+        opensong = songdetails.scan(os.path.join("data", "commit.mp3"))
         self.assertEqual(opensong.artist, random_artist_name)
     
     def testDocTests(self):
