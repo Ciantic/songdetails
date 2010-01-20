@@ -1,7 +1,6 @@
 """
 Song detail scanner system.
 """
-import songdetails
 # Pylint disable settings --------------------
 #
 # ToDos, DocStrings:
@@ -20,6 +19,7 @@ _MULTI_SCANNERS = []
 """Multi scanners registered."""
 
 _HAS_DEFAULTS = False
+"""Has default scanners set already?"""
 
 def register_file_scan(scan_function, extension_matches=None, 
                        custom_matcher=None):
@@ -53,8 +53,8 @@ def register_file_scan(scan_function, extension_matches=None,
     _SCANNERS.append((scan_function, file_path_matcher))
 
 
-def register_multifile_scan(scan_files_function, files_matcher):
-    """Register multi file scanner.
+def register_files_scan(scan_files_function, files_matcher):
+    """Register files scanner.
     
     :param scan_files_function: Scan function returning SongDetails from list of 
         files.
@@ -121,7 +121,13 @@ def scan(file_path):
 
 
 def _register_default_scanners():
-    """Registers the default scanners provided."""
+    """Registers the default scanners provided in :mod:`songdetails`.
+    
+    If you wish to register own scanners, you should use instead
+    :func:`register_file_scan` and :func:`register_files_scan` directly within
+    your module.
+    
+    """
     global _HAS_DEFAULTS
     from songdetails.mp3details import scan as mp3_scan
     if _HAS_DEFAULTS:
