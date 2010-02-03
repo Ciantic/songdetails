@@ -45,8 +45,7 @@ class MP3Details(SongFileDetails):
     duration = MPEGAudioDescriptor("duration")
     
     def __init__(self, filepath):
-        """__init__:
-        
+        """
         :param filepath: File path to MP3.
         :type filepath: string, unicode
         
