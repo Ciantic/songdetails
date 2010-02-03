@@ -11,7 +11,7 @@ pre, .pre, tt {
 }
 
 tt {
-    font-size: 12pt !important;
+    font-size: 100% !important;
 }
 
 /* Parameter having multiple parameters looks odd ******* */
@@ -34,13 +34,14 @@ dt {
     text-align: left;
 }
 
-dt:target {
-    color: black;
-}
-
 dd {
     margin: 0;
     padding: 15px;
+}
+
+/* Highlighted targets ********************************** */
+dt:target, .highlight {
+    color: black;
 }
 
 /* Sub box ********************************************** */
