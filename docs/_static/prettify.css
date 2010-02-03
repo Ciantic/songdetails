@@ -1,8 +1,17 @@
 /* Vertical list of field names, seems too big ********** */
 th.field-name {
-    font-size: 80% !important;
+    font-size: 100% !important;
     font-weight: normal;
     background: transparent !important;
+}
+
+/* Code snippet */
+pre, .pre, tt {
+    font-family: "Consolas", "Bitstream Vera Sans Mono", Monospace !important;
+}
+
+tt {
+    font-size: 12pt !important;
 }
 
 /* Parameter having multiple parameters looks odd ******* */
@@ -12,20 +21,26 @@ th.field-name {
 
 /* Box ************************************************** */
 dl {
-    border: 3px solid #CDCDCD;
+    border: 3px solid #355F7C;
     border-radius: 5px;
     -moz-border-radius: 5px;
     margin-right: 6px;
 }
 
 dt {
-    background-color: #CDCDCD;
+    padding: 0 0 3px 3px;
+    background-color: #355F7C;
+    color: white;
+    text-align: left;
+}
+
+dt:target {
+    color: black;
 }
 
 dd {
-    padding-right: 20px;
-    padding-left: 20px;
-    margin-left: 0;
+    margin: 0;
+    padding: 15px;
 }
 
 /* Sub box ********************************************** */
@@ -36,4 +51,5 @@ dl dl {
 dl dl dt {
     background-color: #EBEBEB;
     padding-left: 5px;
+    color: black;
 }
