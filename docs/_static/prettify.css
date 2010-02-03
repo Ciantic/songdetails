@@ -8,11 +8,20 @@ th.field-name {
     border-top: 1px solid black;
 }
 
+dl {
+    border: 3px solid #EBEBEB;
+    margin-right: 6px;
+}
 
-dd > .field-list {
-	border-bottom: 1px dotted #ABABAB;
-	border-left: 1px dotted #ABABAB;
-	border-right: 1px dotted #ABABAB;
+dt {
+    background-color: #EBEBEB;
+    padding-left: 5px;
+}
+
+dd {
+    padding-right: 20px;
+    padding-left: 20px;
+    margin-left: 0;
 }
 
 .field-body > .first > li > p {
