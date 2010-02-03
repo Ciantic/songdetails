@@ -1,5 +1,3 @@
 tests/data/*
-docs/_build/
-docs/api/
 build/
 *.pyc
