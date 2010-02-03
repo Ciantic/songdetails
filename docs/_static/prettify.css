@@ -1,21 +1,25 @@
+/* Vertical list of field names, seems too big ********** */
 th.field-name {
     font-size: 80% !important;
+    font-weight: normal;
     background: transparent !important;
 }
 
-.class + .class
-{
-    border-top: 1px solid black;
+/* Parameter having multiple parameters looks odd ******* */
+.field-body > .first > li > p {
+    margin-bottom: 0.7em;
 }
 
+/* Box ************************************************** */
 dl {
-    border: 3px solid #EBEBEB;
+    border: 3px solid #CDCDCD;
+    border-radius: 5px;
+    -moz-border-radius: 5px;
     margin-right: 6px;
 }
 
 dt {
-    background-color: #EBEBEB;
-    padding-left: 5px;
+    background-color: #CDCDCD;
 }
 
 dd {
@@ -24,6 +28,12 @@ dd {
     margin-left: 0;
 }
 
-.field-body > .first > li > p {
-    margin-bottom: 0.7em;
+/* Sub box ********************************************** */
+dl dl {
+    border-color: #EBEBEB;
+}
+
+dl dl dt {
+    background-color: #EBEBEB;
+    padding-left: 5px;
 }

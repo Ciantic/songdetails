@@ -41,11 +41,19 @@ todo_include_todos = False
 
 if os.path.exists("api"):
     print "Deleting old api..."
-    shutil.rmtree("api")
+    try:
+        shutil.rmtree("api")
+    except (IOError, WindowsError), e:
+        print >> sys.stderr, "Error: Cannot delete 'api' directory."
+        sys.exit(0)
 
 if os.path.exists("_build"):
     print "Deleting old build..."
-    shutil.rmtree("_build")
+    try:
+        shutil.rmtree("_build")
+    except (IOError, WindowsError), e:
+        print >> sys.stderr, "Error: Cannot delete '_build' directory."
+        sys.exit(0)
 
 def non_init_skip(app, what, name, obj, skip, options):
     """
