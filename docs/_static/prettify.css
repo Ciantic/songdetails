@@ -5,23 +5,28 @@ th.field-name {
     background: transparent !important;
 }
 
-/* Code snippet */
+/* Code snippet ***************************************** */
 pre, .pre, tt {
     font-family: "Consolas", "Bitstream Vera Sans Mono", Monospace !important;
 }
 
+.pre {
+	background-color: transparent !important;
+}
+
 tt {
+	font-weight: normal !important;
     font-size: 100% !important;
 }
 
-/* Parameter having multiple parameters looks odd ******* */
+/* Parameter list looks odd ***************************** */
 .field-body > .first > li > p {
     margin-bottom: 0.7em;
 }
 
 /* Box ************************************************** */
 dl {
-    border: 3px solid #355F7C;
+    border: 3px solid #D9E7EF;
     border-radius: 5px;
     -moz-border-radius: 5px;
     margin-right: 6px;
@@ -29,8 +34,8 @@ dl {
 
 dt {
     padding: 0 0 3px 3px;
-    background-color: #355F7C;
-    color: white;
+    background-color: #D9E7EF;
+    color: black;
     text-align: left;
 }
 
