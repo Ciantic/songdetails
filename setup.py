@@ -13,6 +13,6 @@ setup(
     description="Song details retrieval package.",
     long_description="Retrieves Song detail information such as artist, title, album duration, etc.",
     license="FreeBSD",
-    packages=["songdetails"],
+    packages=['songdetails', 'songdetails.mp3details'],
     package_dir={'songdetails': 'src/songdetails'}
 )
