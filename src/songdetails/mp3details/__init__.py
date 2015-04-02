@@ -37,7 +37,7 @@ class MP3Details(SongFileDetails):
     title = ID3TagDescriptor("TIT2", "TIT2", "TT2", "title")
     artist = ID3TagDescriptor("TPE1", "TPE1", "TP1", "artist")
     album = ID3TagDescriptor("TALB", "TALB", "TAL", "album")
-    year = ID3TagDescriptor("TYER", "TYER", "TYE", "year", int)
+    year = ID3TagDescriptor("TYER", "TYER", "TYE", "year")
     track = ID3TagDescriptor("TRCK", "TRCK", "TRK", "track", _track_convert)
     genre = ID3TagDescriptor("TCON", "TCON", "TCO", "genre", _genre_convert)
     composer = ID3TagDescriptor("TCOM", "TCOM", "TCM")
